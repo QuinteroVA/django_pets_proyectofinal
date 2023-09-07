@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+<!-- Cabecera -->
+{% load static %}{% block title %}Privacidad{% endblock %}
+{% block content %}
+<div class="container-fluid bg-light pt-5">
+  <div class="container py-5">
+    <div class="d-flex flex-column text-center mb-5">
+      <h1 class="display-4 m-0"><span class="text-primary">{{page.title.split.0}}</span> de {{page.title.split.2}}</h1>
+    </div>
+    <div class="section-content">{{page.content|safe}}
+      {% if user.is_authenticated %}
+        <p><a class="btn btn-primary py-3 px-5" href="{% url 'admin:pages_page_change' page.id %}">Editar</a></p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

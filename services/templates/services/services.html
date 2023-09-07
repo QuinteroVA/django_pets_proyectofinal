@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+<!-- Cabecera -->
+{% load static %}{% block title %}Servicios{% endblock %}
+{% block content %}
+<!-- Services Start -->
+<div class="container-fluid bg-light pt-5">
+  <div class="container py-5">
+    <div class="d-flex flex-column text-center mb-5">
+      <h4 class="text-secondary mb-3">Nuestros Servicios</h4>
+      <h1 class="display-4 m-0"><span class="text-primary">Servicio</span> Premium</h1>
+    </div>
+    <div class="row pb-3">
+      {% for service in listServices %}
+        <div class="col-md-6 col-lg-4 mb-4">
+          <div class="d-flex flex-column text-center bg-white mb-2 p-3 p-sm-5">
+            <h3 class="flaticon-{{service.icon_class}} display-3 font-weight-normal text-secondary mb-3"></h3>
+            <h3 class="mb-3">{{service.title}}</h3><p>{{service.content|safe}}</p>
+            <a class="text-uppercase font-weight-bold" href="{% url 'blog' %}">Leer más</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>  
+<!-- Services End -->
+<!-- Testimonial Start -->
+<div class="container-fluid p-0 py-5">
+  <div class="container p-0 pt-5">
+    <div class="d-flex flex-column text-center mb-5">
+      <h4 class="text-secondary mb-3">Testimonios</h4>
+      <h1 class="display-4 m-0">Nuestros Clientes <span class="text-primary">Dicen</span></h1>
+    </div>
+    <div class="owl-carousel testimonial-carousel">
+      {% for testimonial in listTestimonial %}
+        <div class="bg-light mx-3 p-4">
+          <div class="d-flex align-items-end mb-3 mt-n4 ml-n4">
+            <img class="img-fluid" src="{{testimonial.image.url}}" style="width: 80px; height: 80px" alt=""/>
+            <div class="ml-3">
+              <h5>{{testimonial.name}}</h5><i>{{testimonial.profession}}</i>
+            </div>
+          </div>
+          <p class="m-0">{{testimonial.content|safe}}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div> 
+<!-- Testimonial End -->
+{% endblock %}

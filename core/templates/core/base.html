@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>{% block title %}{% endblock %} | PetLover - Cuidado de Mascotas</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    {% load static %}
+    <!-- Google Web Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet"/>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Flaticon Font -->
+    <link href="{% static 'core/lib/flaticon/font/flaticon.css' %}" rel="stylesheet"/>
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'core/lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'core/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet"/>
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'core/css/style.css' %}" rel="stylesheet"/>
+  </head>
+  <body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+      <div class="row bg-secondary py-2 px-lg-5">
+        <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
+          <div class="d-inline-flex align-items-center">
+            {% load pages_secundary %}{% get_list_pages as listPages %}
+            {% for page in listPages %}
+              {% if "Preguntas Frecuentes" in page.title %}
+                <a href="{% url 'pages' page.id %}" class="text-white pr-3 link">{{page.title.split.0}}</a>
+              {% endif %}
+            {% endfor %}
+            <span class="text-white">|</span><a class="text-white px-3" href="">Ayuda</a>
+            <span class="text-white">|</span><a class="text-white pl-3" href="">Asistencia</a>
+          </div>
+        </div>
+        <div class="col-lg-6 text-center text-lg-right">
+          <div class="d-inline-flex align-items-center">
+            <a class="text-white px-3" href="{{URL_FACEBOOK}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a class="text-white px-3" href="{{URL_TWITTER}}" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a class="text-white px-3" href="{{URL_LINKEDIN}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a class="text-white px-3" href="{{URL_INSTAGRAM}}" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a class="text-white pl-3" href="{{URL_YOUTUBE}}" target="_blank"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row py-3 px-lg-5">
+        <div class="col-lg-4">
+          <a href="{% url 'home' %}" class="navbar-brand d-none d-lg-block">
+            <h1 class="m-0 display-5 text-capitalize"><span class="text-primary">Pet</span>Lover</h1>
+          </a>
+        </div>
+        <div class="col-lg-8 text-center text-lg-right">
+          <div class="d-inline-flex align-items-center">
+            <div class="d-inline-flex flex-column text-center pr-3 border-right">
+              <h6>Horario</h6><p class="m-0">8.00AM - 9.00PM</p>
+            </div>
+            <div class="d-inline-flex flex-column text-center px-3 border-right">
+              <h6>Escríbenos</h6><p class="m-0">petlover@correo.com</p>
+            </div>
+            <div class="d-inline-flex flex-column text-center pl-3">
+              <h6>Llámanos</h6><p class="m-0">+593 98345 6789</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+    <div class="container-fluid p-0">
+      <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
+        <a href="{% url 'home' %}" class="navbar-brand d-block d-lg-none">
+          <h1 class="m-0 display-5 text-capitalize font-italic text-white">
+            <span class="text-primary">Seguridad</span>Primero
+          </h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+          <div class="navbar-nav mr-auto py-0">
+            <li><a href="{% url 'home' %}" class="nav-item nav-link {% if request.path == '/' %}active{% endif %}">Inicio</a></li>
+            <li><a href="{% url 'about' %}" class="nav-item nav-link {% if request.path == '/about/' %}active{% endif %}">Acerca de</a></li>
+            <li><a href="{% url 'services' %}" class="nav-item nav-link {% if request.path == '/services/' %}active{% endif %}">Servicio</a></li>
+            <li><a href="{% url 'prices' %}" class="nav-item nav-link {% if request.path == '/prices/' %}active{% endif %}">Precio</a></li>
+            <li><a href="{% url 'booking' %}" class="nav-item nav-link {% if request.path == '/booking/' %}active{% endif %}">Reserva</a></li>
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle
+                {% if request.path == '/blog/' or request.path == '/single/' %}active{% endif %}" data-toggle="dropdown">Blog
+              </a>
+              <div class="dropdown-menu rounded-0 m-0">
+                <a href="{% url 'blog' %}" class="dropdown-item">Relato</a><a href="{% url 'single' %}" class="dropdown-item">Detalle</a>
+              </div>
+            </li>
+            <li>
+              <a href="{% url 'contact' %}" class="nav-item nav-link {% if request.path == '/contact/' %}active{% endif %}">Contacto</a>
+            </li>  
+          </div>
+          <a href="{% url 'prices' %}" class="btn btn-lg btn-primary px-3 d-none d-lg-block">Cotizar</a>
+        </div>
+      </nav>
+    </div>
+    <!-- Navbar End -->
+    {% block content %}{% endblock %}
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
+      <div class="row pt-5">
+        <div class="col-lg-4 col-md-12 mb-5">
+          <h1 class="mb-3 display-5 text-capitalize text-white"><span class="text-primary">Pet</span>Lover</h1>
+          <p style="text-align:justify" class="m-0">Gracias por visitar PetLover, estamos comprometidos en brindarte un servicio de alta calidad
+            y una experiencia excepcional. Si tienes alguna pregunta, comentario o sugerencia,
+            no dudes en contactarnos. Tu opinión es importante para nosotros y nos ayuda a mejorar
+            continuamente nuestros servicios.<br>¡Te Esperamos!
+          </p>
+        </div>
+        <div class="col-lg-8 col-md-12">
+          <div class="row">
+            <div class="col-md-4 mb-5">
+              <h5 class="text-primary mb-4">Contactos</h5>
+              <p><i class="fa fa-map-marker-alt mr-2"></i>123 Street, New York, USA</p>
+              <p><i class="fa fa-phone-alt mr-2"></i>+593 98345 6789</p>
+              <p><i class="fa fa-envelope mr-2"></i>petlover@correo.com</p>
+              <div class="d-flex justify-content-start mt-4">
+                <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px"
+                  href="{{URL_TWITTER}}" target="_blank"><i class="fab fa-twitter"></i>
+                </a>
+                <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px"
+                    href="{{URL_FACEBOOK}}" target="_blank"><i class="fab fa-facebook-f"></i>
+                </a>
+                <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px"
+                  href="{{URL_LINKEDIN}}" target="_blank"><i class="fab fa-linkedin-in"></i>
+                </a>
+                <a class="btn btn-outline-light rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px"
+                  href="{{URL_INSTAGRAM}}" target="_blank"><i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-4 mb-5"><h5 class="text-primary mb-4">Enlaces</h5>
+              <div class="d-flex flex-column justify-content-start">
+                <a class="text-white mb-2" href="{% url 'home' %}"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                <a class="text-white mb-2" href="{% url 'about' %}"><i class="fa fa-angle-right mr-2"></i>Acerca de</a>
+                <a class="text-white mb-2" href="{% url 'services' %}"><i class="fa fa-angle-right mr-2"></i>Servicios</a>
+                <a class="text-white mb-2" href="{% url 'about' %}"><i class="fa fa-angle-right mr-2"></i>Equipo</a>
+                <a class="text-white mb-2" href="{% url 'contact' %}"><i class="fa fa-angle-right mr-2"></i>Contactos</a>
+              </div>
+            </div>
+            <div class="col-md-4 mb-5"><h5 class="text-primary mb-4">Noticias</h5>
+              <form action="">
+                <div class="form-group">
+                  <input type="text" class="form-control border-0" placeholder="Nombre" required="required"/>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control border-0" placeholder="Correo" required="required"/>
+                </div>
+                <div>
+                  <button class="btn btn-lg btn-primary btn-block border-0" type="submit">Enviar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid text-white py-4 px-sm-3 px-md-5" style="background: #111111">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+          <p class="m-0 text-white">&copy;
+            <a class="text-white font-weight-bold" href="{% url 'home' %}">PetLover</a>. Todos los Derechos Reservados. Diseñado por
+            <a class="text-white font-weight-bold" href="">Angel Quintero</a>
+          </p>
+        </div>
+        <div class="col-md-6 text-center text-md-right">
+          <ul class="nav d-inline-flex">
+            <li class="nav-item">
+              {% load pages_secundary %}{% get_list_pages as listPages %}
+              {% for page in listPages %}
+                <a href="{% url 'pages' page.id %}" class="text-white pr-3 link">{{page.title.split.0}}</a>
+              {% endfor %}
+            </li>
+            <li class="nav-item"><a class="nav-link text-white py-0" href="#">Ayuda</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'core/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static 'core/lib/owlcarousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'core/lib/tempusdominus/js/moment.min.js' %}"></script>
+    <script src="{% static 'core/lib/tempusdominus/js/moment-timezone.min.js' %}"></script>
+    <script src="{% static 'core/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <!-- Contact Javascript File -->
+    <script src="{% static 'core/mail/jqBootstrapValidation.min.js' %}"></script>
+    <script src="{% static 'core/mail/contact.js' %}"></script>
+    <!-- Template Javascript -->
+    <script src="{% static 'core/js/main.js' %}"></script>
+  </body>
+</html>

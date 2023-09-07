@@ -1,0 +1,123 @@
+{% extends 'core/base.html' %}
+<!-- Cabecera -->
+{% load static %}{% block title %}Acerca de{% endblock %}
+{% block content %}
+<!-- About Start -->
+<div class="container py-5">
+  <div class="row py-5">
+    <div class="col-lg-7 pb-5 pb-lg-0 px-3 px-lg-5"><h4 class="text-secondary mb-3">Acerca de</h4>
+      <h1 class="display-4 mb-4">
+        <span class="text-primary">Alojamiento</span> & <span class="text-secondary">Guardería</span>
+      </h1>
+      <h5 class="text-muted mb-3">Ofrecemos servicios de alojamiento y guardería de alta calidad para tu mascota.</h5>
+      <p style="text-align:justify" class="mb-4">
+        Nuestra dedicación es garantizar su bienestar y comodidad en todo
+        momento. Contamos con personal calificado y un entorno seguro para que
+        tu amigo peludo se sienta como en casa.
+      </p>
+      <ul class="list-inline">
+        <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Mejor en la Industría</h5></li>
+        <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Servicios de Emergencia</h5></li>
+        <li><h5><i class="fa fa-check-double text-secondary mr-3"></i>Atención al Cliente 24/7</h5></li>
+      </ul>
+      <a href="" class="btn btn-lg btn-primary mt-3 px-4">Más Información</a>
+    </div>
+    <div class="col-lg-5">
+      <div class="row px-3">
+        <div class="col-12 p-0">
+          <img class="img-fluid w-100" src="{% static 'core/img/about-1.jpg' %}" alt=""/>
+        </div>
+        <div class="col-6 p-0">
+          <img class="img-fluid w-100" src="{% static 'core/img/about-2.jpg' %}" alt=""/>
+        </div>
+        <div class="col-6 p-0">
+          <img class="img-fluid w-100" src="{% static 'core/img/about-3.jpg' %}" alt=""/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- About End -->
+<!-- Features Start -->
+<div class="container-fluid bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-5">
+        <img class="img-fluid w-100" src="{% static 'core/img/feature.jpg' %}" alt=""/>
+      </div>
+      <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
+        <h4 class="text-secondary mb-3">¿Porqué elegirnos?</h4>
+        <h1 class="display-4 mb-4"><span class="text-primary">Cuidado</span> Especial</h1>
+        <p style="text-align:justify" class="mb-4">
+          En PetLover, nos destacamos por ofrecer un cuidado especial y dedicado
+          para tus queridas mascotas. Nuestro compromiso es garantizar su
+          felicidad y bienestar en todo momento. Nos enorgullece proporcionar
+          servicios de alta calidad que superan tus expectativas.
+        </p>
+        <div class="row py-2">
+          <div class="col-6">
+            <div class="d-flex align-items-center mb-4">
+              <h1 class="flaticon-cat font-weight-normal text-secondary m-0 mr-3"></h1>
+              <h5 class="text-truncate m-0">Mejores en el Mercado</h5>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex align-items-center mb-4">
+              <h1 class="flaticon-doctor font-weight-normal text-secondary m-0 mr-3"></h1>
+              <h5 class="text-truncate m-0">Servicios de Emergencia</h5>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex align-items-center">
+              <h1 class="flaticon-care font-weight-normal text-secondary m-0 mr-3"></h1>
+              <h5 class="text-truncate m-0">Cuidado Especial</h5>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex align-items-center">
+              <h1 class="flaticon-dog font-weight-normal text-secondary m-0 mr-3"></h1>
+              <h5 class="text-truncate m-0">Atención al Cliente</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Features End -->
+<!-- Team Start -->
+<div class="container mt-5 pt-5 pb-3">
+  <div class="d-flex flex-column text-center mb-5">
+    <h4 class="text-secondary mb-3">Equipo</h4><h1 class="display-4 m-0">Conoce nuestro <span class="text-primary">Equipo</span></h1>
+  </div>
+  <div class="row">
+    {% for about in listAbout %}
+    <div class="col-lg-3 col-md-6">
+      <div class="team card position-relative overflow-hidden border-0 mb-4">
+        <img class="card-img-top" src="{{about.image.url}}" alt=""/>
+        <div class="card-body text-center p-0">
+          <div class="team-text d-flex flex-column justify-content-center bg-light">
+            <h5>{{about.name}}</h5><i>{{about.profession}}</i>
+          </div>
+          <div class="team-social d-flex align-items-center justify-content-center bg-dark">
+            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
+              style="width: 36px; height: 36px" href="{{URL_TWITTER}}" target="_blank"><i class="fab fa-twitter"></i>
+            </a>
+            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
+              style="width: 36px; height: 36px" href="{{URL_FACEBOOK}}" target="_blank"><i class="fab fa-facebook-f"></i>
+            </a>
+            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
+              style="width: 36px; height: 36px" href="{{URL_LINKEDIN}}" target="_blank"><i class="fab fa-linkedin-in"></i>
+            </a>
+            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
+              style="width: 36px; height: 36px" href="{{URL_INSTAGRAM}}" target="_blank"><i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<!-- Team End -->
+{% endblock %}
